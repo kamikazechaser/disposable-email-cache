@@ -24,10 +24,7 @@ func LoadCache() *cache.Cache {
 
 	indexData, err := ioutil.ReadFile("index.json")
 	if err != nil {
-		log.Err(err).Msg("tasks: could no read index.json")
-		log.Info().Msg("tasks: attempting redownload of data")
-		DownloadData()
-		LoadCache()
+		log.Fatal().Err(err).Msg("tasks: could no read index.json")
 		return nil
 	}
 

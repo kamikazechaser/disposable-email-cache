@@ -21,7 +21,9 @@ func Start() error {
 	router.GET("/update-cache", updateCacheHandler)
 	router.GET("/check/:email", checkDisposableHandler)
 
+	tasks.DownloadData()
 	loadedCache = tasks.LoadCache()
+
 	return router.Run(":5000")
 }
 
